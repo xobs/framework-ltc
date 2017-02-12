@@ -1,0 +1,7 @@
+{
+    "name": "framework-ltc",
+    "description": "Love-to-Code default framework",
+    "system": "*",
+    "url": "https://www.arduino.cc/en/Main/Software",
+    "version": "1.0.0"
+}
