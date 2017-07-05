@@ -83,12 +83,17 @@ SECTIONS
     . = ALIGN(4);
     *(.ramtext)
 
-    . = ALIGN(16);
-    *(.dataend .dataend.*)
     PROVIDE(_edata = .);
   } > ram AT > flash
 
-  . = ALIGN(4);
+  .bytecode :
+  {
+    . = ALIGN(16);
+    PROVIDE(_bytecode_start = .);
+    *(.bytecode .bytecode.*)
+    . = ALIGN(4);
+    PROVIDE(_bytecode_end = .);
+  } > flash
 
   .flasheeprom (NOLOAD) : ALIGN(1024)
   {
