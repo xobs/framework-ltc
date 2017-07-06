@@ -65,6 +65,7 @@ SECTIONS
     *(.eh_frame_hdr)
 
     *(.eh_frame)
+    . = ALIGN(16);
   } > flash
 
   .textalign : ONLY_IF_RO
@@ -77,13 +78,14 @@ SECTIONS
 
   .data :
   {
-    . = ALIGN(4);
+    . = ALIGN(16);
     PROVIDE(_data = .);
     *(.data .data.* .gnu.linkonce.d.*)
     . = ALIGN(4);
     *(.ramtext)
 
     PROVIDE(_edata = .);
+    . = ALIGN(16);
   } > ram AT > flash
 
   .bytecode :
@@ -93,6 +95,7 @@ SECTIONS
     *(.bytecode .bytecode.*)
     . = ALIGN(4);
     PROVIDE(_bytecode_end = .);
+    . = ALIGN(16);
   } > flash
 
   .flasheeprom (NOLOAD) : ALIGN(1024)
