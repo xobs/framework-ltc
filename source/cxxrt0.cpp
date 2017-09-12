@@ -42,15 +42,13 @@ void *operator new[](size_t size)
   return malloc(size);
 }
 
-void *operator new(size_t size, void *ptr)
+void *operator new(size_t, void *ptr)
 {
-  (void)ptr;
   return malloc(size);
 }
 
-void *operator new[](size_t size, void *ptr)
+void *operator new[](size_t, void *ptr)
 {
-  (void)ptr;
   return malloc(size);
 }
 
@@ -65,14 +63,11 @@ void operator delete[](void *p)
   free(p);
 }
 
-void operator delete(void *p, void *ptr)
+/* These are called on failure of placement-new() */
+void operator delete(void * /*p*/, void * /*ptr*/)
 {
-  (void)ptr;
-  free(p);
 }
 
-void operator delete[](void *p, void *ptr)
+void operator delete[](void * /*p*/, void * /*ptr*/)
 {
-  (void)ptr;
-  free(p);
 }
