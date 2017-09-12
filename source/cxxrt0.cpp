@@ -44,12 +44,12 @@ void *operator new[](size_t size)
 
 void *operator new(size_t, void *ptr)
 {
-  return malloc(size);
+  return ptr;
 }
 
 void *operator new[](size_t, void *ptr)
 {
-  return malloc(size);
+  return ptr;
 }
 
 
